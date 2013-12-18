@@ -1,8 +1,7 @@
 #tm_webpreview_content {
-	padding: 0;
-	margin-top: 6em;
+/*	padding    : 1;*/
+	margin-top : 6em;
 }
-
 
 #sql_browser {
 /*    position: absolute;
@@ -21,7 +20,7 @@
 }
 
 #sql_browser table {
-/*    width: 100%;*/
+    width: 100%;
     border-collapse: collapse;
 }
 

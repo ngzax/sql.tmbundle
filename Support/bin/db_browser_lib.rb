@@ -180,7 +180,7 @@ def render(template_file)
 end
 
 def html(subtitle = nil)
-  puts html_head(:window_title => "SQL", :page_title => "Database Browser", :sub_title => subtitle || @options.database.name, :html_head => render('head'))
+  puts html_head(:window_title => "SQL", :page_title => "Data Browser", :sub_title => subtitle || @options.database.name, :html_head => render('head'))
   yield
   html_footer
   exit

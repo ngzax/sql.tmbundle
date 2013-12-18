@@ -77,17 +77,20 @@ end
 def print_data(query = nil)
   @page_size = @options.page_size
   offset     = @options.offset
+  
   if not query or query.to_s.size == 0
     query     = "SELECT * FROM %s" % @options.database.table
     @page_size = 5
     offset    = 0
   end
+  
   run_query = query.sub(/;\s*$/, '')
+  
   @limited  = true
-  if not query=~ /\bLIMIT\b/i and run_query =~ /\s*SELECT/i
-    run_query << ' LIMIT %d OFFSET %d' % [@page_size, offset]
-    @limited = false
-  end
+#  if not query=~ /\bLIMIT\b/i and run_query =~ /\s*SELECT/i
+#    run_query << ' LIMIT %d OFFSET %d' % [@page_size, offset]
+#    @limited = false
+#  end
 
   @query = query
   begin
@@ -147,9 +150,9 @@ def format(content, type)
   else
     full_content = escape(content)
     content = escape(content).gsub("\n", "<br>")
-    if content.length > 30
-      content = content[/\A.{29}\w*/m] + '<span style="color: red;font-weight: bold">' + '…</span>'
-    end
+#    if content.length > 30
+#      content = content[/\A.{29}\w*/m] + '<span style="color: red;font-weight: bold">' + '…</span>'
+#    end
     tag = '<span'
     tag << ' title="' + full_content + '"' if content != full_content
     tag << '>' + content + '</span>'
@@ -173,15 +176,16 @@ end
 if @options.mode == 'tables'
   @tables = @connection.table_list(@options.database.name)
   print render('tables')
+
 elsif @options.mode == 'home'
   html do
     STDOUT.flush
     @content = ''
+    
     if @options.query.to_s.size > 0
       @content = print_data(@options.query)
-    elsif ENV['TM_BUNDLE_SUPPORT']
-      @content = '<h2>Database Browser</h2>Please choose a table from the left'
     end
+
     begin
       @databases = @connection.database_list
     rescue ConnectorException => e
@@ -199,8 +203,10 @@ elsif @options.mode == 'search'
     end
   end
   print print_data(query)
+
 elsif @options.query.to_s.size > 0
   print print_data(@options.query)
+
 elsif @options.database.table
   if @options.database.table != NO_TABLE
     @table  = @options.database.table
