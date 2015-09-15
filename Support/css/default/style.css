@@ -39,42 +39,38 @@
 /*    width: 90%;*/
 /*    margin-bottom: 30px;*/
 }
+
 #sql_browser table td, #sql_browser table th {
-    border-left:  1px solid #808080;
     border-right: 1px solid #808080;
-/*    text-align: center;*/
+    border-right: 1px solid #808080;
 }
 
 #sql_browser table th {
-    border-bottom: 1px solid #444;
-
+  border-bottom: 2px solid #FFF;
+  font-family: "Monaco", monospace;
+  font-size: 90%;
+  text-align: left;
 	vertical-align: top;
-
-    font-family: "Monaco", monospace;
-    font-size: 90%;
-    text-align: left;
 	white-space: nowrap;
 }
 
 #sql_browser table th a {
-    text-decoration: none;
-/*    color: #000;*/
+  text-decoration: none;
 }
 
 #sql_browser table td {
-    font-family: "Monaco", monospace;
-    font-size: 80%;
-/*    background-color: white;*/
+  border-bottom: 1px solid #808080;
+  font-family: "Monaco", monospace;
+  font-size: 80%;
 }
 
 #sql_browser .datatype {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 
 #sql_browser .query {
-/*    font-size: smaller;*/
-    font-family: "Monaco", monospace;
+  font-family: "Monaco", monospace;
 }
 
 #sql_browser table {
