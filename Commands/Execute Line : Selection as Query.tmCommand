@@ -5,7 +5,10 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>query=${TM_SELECTED_TEXT:-$TM_CURRENT_LINE}
+	<string>#!/bin/bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+query=${TM_SELECTED_TEXT:-$TM_CURRENT_LINE}
 
 ruby18 "$TM_BUNDLE_SUPPORT/bin/db_browser.rb" --query="$(tr '\n' ' ' &lt;&lt;&lt; "$query")"
 </string>
@@ -13,13 +16,21 @@ ruby18 "$TM_BUNDLE_SUPPORT/bin/db_browser.rb" --query="$(tr '\n' ' ' &lt;&lt;&lt
 	<string>line</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^Q</string>
+	<string>@r</string>
 	<key>name</key>
 	<string>Execute Line / Selection as Query</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>uuid</key>
 	<string>C3045596-791D-11D9-9130-000A95766570</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
